@@ -278,8 +278,7 @@ jQuery(document).ready(function($){
 		
 	function slideTitle(description) {
 		var title = stripslashes(decodeURIComponent(description));
-		
-		if ( title != 'undefined' && title != 'undefined<br>undefined')  {
+		if (title.toLowerCase().indexOf("undefined") > 0) {		
 			return title;
 		}
 		return false;
