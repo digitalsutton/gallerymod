@@ -208,10 +208,8 @@ jQuery(document).ready(function($){
 	    
 	        $slides.filter(':visible').fadeOut('slow');
 	        $hash.fadeIn('slow');
-
 	        $(".galleryformatter-futureus-gallery .gallery-slides .panel-overlay").scrollTop();
 	        $(".galleryformatter-futureus-gallery .gallery-slides .panel-overlay").jScrollPane();
-	        
 	        var $panelheight = $(".galleryformatter-futureus-gallery .gallery-slides .panel-overlay").innerHeight();
 	        $(".gallery-slides").css({
 	        	'display': 'block',
@@ -227,8 +225,7 @@ jQuery(document).ready(function($){
 	        //Colorbox overlay
 			$(hash_id + "-" + $id + "-wrapper a.galimage").colorbox({
 				rel:"nofollow",
-				//title: slideTitle($slidesdata[$slidehash].title + "<br>" + $slidesdata[$slidehash].description),
-				title: slideTitle($slidesdata[$slidehash].description),
+				title: slideTitle( $slidesdata[$slidehash].title + "<br>") + slideTitle($slidesdata[$slidehash].description),
 				scalePhotos: false
 			});
 	        $(document).bind('cbox_complete', function(){
@@ -236,16 +233,11 @@ jQuery(document).ready(function($){
 	            $("#cboxClose").css({
 	            	'float' : 'none',
 	            	'background' : 'black'
-	            });
-	            
+	            });       
 	            $.colorbox.resize({
 	            	innerHeight: $("#cboxLoadedContent .cboxPhoto").height() + $("#cboxTitle").innerHeight()
 	            });
-
 	        });
-
-			
-
 
 	        $(".galleryformatter-futureus-gallery .gallery-slides .panel-overlay").css({
 				'top': '15px'
@@ -279,7 +271,7 @@ jQuery(document).ready(function($){
 		
 	function slideTitle(description) {
 		var title = stripslashes(decodeURIComponent(description));
-		if (title.toLowerCase().indexOf("undefined") > 0) {		
+		if (title != "undefined" && title !="undefined<br>") {
 			return title;
 		}
 		return false;
