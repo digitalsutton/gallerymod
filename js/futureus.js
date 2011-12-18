@@ -274,7 +274,7 @@ jQuery(document).ready(function($){
 		if (title != "undefined" && title !="undefined<br>") {
 			return title;
 		}
-		return false;
+		return '';
 	}
 	
 	function stripslashes (str) {
