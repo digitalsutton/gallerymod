@@ -28,7 +28,7 @@ function FUTUREUS_SLIDER_register_scripts() {
 	}
 
    //THEME OVERRIDE DIRECTORY
-   $custom_theme = 'revolver';
+   $custom_theme = 'ga';
    wp_register_style( 'futureus-theme', FUTUREUS_SLIDER_plugin_url( 'themes/' . $custom_theme . '/gallery.css' ), array(), '', 'all' );
 
    wp_register_style( 'futureus-scrollpane', FUTUREUS_SLIDER_plugin_url( 'css/jquery.jscrollpane.css' ), array(), '', 'all' );
