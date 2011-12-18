@@ -21,7 +21,6 @@ class FUTUREUS_NGG_JQuery_Slider extends WP_Widget {
 		
 		//todo: bring this into the class.
 		
-		include FUTUREUS_SLIDER_PLUGIN_DIR . '/config.php';
 		gallery_template($gallery, $picturelist);
 	}
 
@@ -29,7 +28,6 @@ class FUTUREUS_NGG_JQuery_Slider extends WP_Widget {
 		$new_instance['title'] = esc_attr($new_instance['title']);
 		return $new_instance;
 	}
-
 }
 
 	function galleryformatter_getimage_dimensions($ngg_image, $view = 'full') {
@@ -121,7 +119,7 @@ class FUTUREUS_NGG_JQuery_Slider extends WP_Widget {
 						<img src='" . $item->imageURL . "' id='" . $hash_id . "' title='" . $title . "' width='" . $image_size['width'] . "' height='" . $image_size['height'] . "'></div>
 					";
 						
-			} // END linking to original
+			} 
 
 			// setup thumbnail images
 			if($num_of_images > 1) {
@@ -135,8 +133,7 @@ class FUTUREUS_NGG_JQuery_Slider extends WP_Widget {
 		$gallery_thumbs = $thumbs;
 		$gallery_slides = $slides;
 		
-		$gallery_slide_height = $image_size['height'];
-
+		$gallery_slide_height = $ngg->options['imgHeight'];
 		$gallery_slide_width = $ngg->options['imgWidth'];
 		
 		if($num_of_images > 1) {
@@ -144,6 +141,9 @@ class FUTUREUS_NGG_JQuery_Slider extends WP_Widget {
 			$gallery_thumb_width = $thumb_size['width'];
 		}
 		$gallery_style .= 'galleryformatter-futureus-gallery';
+		
+		//include config file
+		include FUTUREUS_SLIDER_PLUGIN_DIR . '/config.php';
 		
 		//Prepare params array for jquery
 		$slides_json = json_encode($slides);

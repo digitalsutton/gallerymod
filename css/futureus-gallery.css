@@ -1,8 +1,10 @@
 /*	Image Gallery	*/
+
+/* Make your style overrides in the theme css file  */
+
 div.group-gallery {
 	background-color: #000000;
 	padding: 20px 22px 21px 22px;
-/*	max-width: 700px;*/
 }
 
 div.group-gallery div {
@@ -66,8 +68,6 @@ div.group-gallery h5 {
 	height:	91px;
 }
 
-
-
 .galwrap {	
 	height: 420px;
 	overflow: hidden;
@@ -79,7 +79,12 @@ div.group-gallery h5 {
 div.group-gallery div.galleryformatter-futureus-gallery { margin-top: 15px; }
 
 .galleryformatter-futureus-gallery .gallery-thumbs { clear: both; }
-.galleryformatter-futureus-gallery .gallery-slides { position: relative; float: left; }
+
+.galleryformatter-futureus-gallery .gallery-slides { 
+	position: relative; 
+	float: left; 
+	overflow: hidden;
+}
 
 
 .galleryformatter-futureus-gallery li.gallery-slide { 
@@ -128,8 +133,6 @@ div.group-gallery div.galleryformatter-futureus-gallery { margin-top: 15px; }
   padding: 0px;
 }
 
-/*.galleryformatter-futureus-gallery .gallery-thumbs li a:hover { background-position: center -307px; }
-.galleryformatter-futureus-gallery .gallery-thumbs li.active a { background-position: center -303px; }*/
 
 .galleryformatter-futureus-gallery .gallery-thumbs li.active img,
 .galleryformatter-futureus-gallery .gallery-thumbs li a:hover img {
@@ -184,15 +187,11 @@ div.group-gallery div.galleryformatter-futureus-gallery { margin-top: 15px; }
 }
 
 
-
-
-/** buttons **/
 .galleryformatter .view-full {
- position: absolute;
+ 	position: absolute;
 }
 
-
-/* hard reset for now sorry*/
+/* hard reset for now */
 .galleryformatter { margin: 0 auto; }
 .galleryformatter * { padding: 0; margin: 0; }
 .galleryformatter li {
@@ -204,10 +203,10 @@ div.group-gallery div.galleryformatter-futureus-gallery { margin-top: 15px; }
 
 .galleryformatter .gallery-slides,
 .galleryformatter .gallery-thumbs { margin: 0 auto; }
+
 .galleryformatter .gallery-slides ul,
 .galleryformatter .gallery-thumbs ul { margin: 0; }
 
-/** css gallery */
 
 .gallery-thumbs .wrapper,
 .gallery-slides { overflow: hidden; }
@@ -217,7 +216,6 @@ div.group-gallery div.galleryformatter-futureus-gallery { margin-top: 15px; }
 
 .gallery-thumbs { position: relative; }
 
-/*.gallery-thumbs .wrapper ul {}*/
 
 .gallery-thumbs .wrapper ul {
   list-style-image:none;
@@ -231,9 +229,7 @@ div.group-gallery div.galleryformatter-futureus-gallery { margin-top: 15px; }
   background: none;
 }
 .gallery-thumbs li a { outline: none; }
-/*** end css gallery ****/
 
-/*** js enabled gallery css **/
 .gallery-processed .gallery-frame { position:relative; }
 .gallery-processed .gallery-slides .gallery-slide  {
   float: none;
@@ -243,11 +239,9 @@ div.group-gallery div.galleryformatter-futureus-gallery { margin-top: 15px; }
   padding: 0;
 }
 
-
 .galleryformatter .slide-button {
 	z-index: 501;
 }
-
 
 .galleryformatter-futureus-gallery .gallery-slides .panel-overlay {
 	background:#000000 none repeat scroll 0 0;
@@ -258,15 +252,11 @@ div.group-gallery div.galleryformatter-futureus-gallery { margin-top: 15px; }
 	z-index: 9999;
 }
 
-
-
 .galleryformatter-futureus-gallery .gallery-slides .panel-overlay p {
 	background: #000000;
 	padding: 0;
 	color:#ffffff;
 }
-
-
 
 .galleryformatter-futureus-gallery .gallery-thumbs .wrapper {
 	overflow: auto;
