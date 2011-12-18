@@ -227,7 +227,8 @@ jQuery(document).ready(function($){
 	        //Colorbox overlay
 			$(hash_id + "-" + $id + "-wrapper a.galimage").colorbox({
 				rel:"nofollow",
-				title: slideTitle($slidesdata[$slidehash].title + "<br>" + $slidesdata[$slidehash].description),
+				//title: slideTitle($slidesdata[$slidehash].title + "<br>" + $slidesdata[$slidehash].description),
+				title: slideTitle($slidesdata[$slidehash].description),
 				scalePhotos: false
 			});
 	        $(document).bind('cbox_complete', function(){
