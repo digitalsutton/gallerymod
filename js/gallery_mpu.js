@@ -9,7 +9,7 @@ jQuery(document).ready(function($){
 	  $(settings.sidebarElement).each( 
 	    function(index) {
 	      // get the position of the top of the gallery
-	      var galleryOff = $('#contentleft').offset().top + $('.galleryformatter-view-full').offset().top;
+	      var galleryOff = $(settings.contentElement).offset().top + $('.galleryformatter-view-full').offset().top;
 	      // get the position of the top of the current block
 	      var blockOff = $(this).offset().top + $('#sidebar').offset().top;
 	      var difference = Math.round(galleryOff - blockOff);
@@ -26,9 +26,15 @@ jQuery(document).ready(function($){
 	          // this is the top block so add margin to the top of this block to make it line up 
 	          $(settings.sidebarElement).css('padding-top', difference);
 	        } 
-	        // insert a new gallery mpu in the sidebar before the current block
-	        $(this).after('<div id="dart-tag-gallery-mpu" class="block clearfix"><iframe id="adframe" src="' + settings.ad_iframe + '?' + settings.dart_keywords + '&tagpath=' + settings.tagpath + '" width="300" height="' + settings.adHeight + '" frameBorder="0" scrolling="no"></iframe></div>');
-		
+	        
+	        // insert a new gallery mpu in the sidebar before the current block. using before or after.
+	        var insertAd = '<div id="dart-tag-gallery-mpu" class="block clearfix"><iframe id="adframe" src="' + settings.ad_iframe + '?' + settings.dart_keywords + '&tagpath=' + settings.tagpath + '" width="300" height="' + settings.adHeight + '" frameBorder="0" scrolling="no"></iframe></div>';
+	        
+	        if (settings.beforeOrAfter == 'after') { 
+	        	$(this).after(insertAd);
+			} else {
+				$(this).before(insertAd);
+			}
 	        return false;     
 	      } 
 	    }
@@ -40,7 +46,7 @@ jQuery(document).ready(function($){
 	settings.galleryRefreshMPU = function() {	
 		$('#dart-tag-gallery-mpu').replaceWith('<div id="dart-tag-gallery-mpu" class="block clearfix"><iframe id="adframe" src="' + settings.ad_iframe + '?' + settings.dart_keywords + '&tagpath=' + settings.tagpath + '" width="300" height="' + settings.adHeight + '" frameBorder="0" scrolling="no"></iframe></div>');
 		$('#dart-tag-gallery-mpu').css({
-			'height' : $('#adframe').contents().find('body').innerHeight()
+			'height' : $(this).contents().find('body').outerHeight()
 		});
 	}
 });

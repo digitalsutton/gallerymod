@@ -21,15 +21,15 @@ function futureusuploadsngg($image) {
  }
  
  
-function futureusresizengg(&$image, $width = 580, $height = 420) {
+function futureusresizengg(&$image, $width = 0, $height = 0) {
   	global $wpdb, $ngg;
   	
-  	chmod(ABSPATH.$image->imagePath ,0777);
+  	chmod(ABSPATH.$image->path ,0777);
   	
   	if ( ($ngg->options['imgBackup'] == true) && (!file_exists($image->imagePath . '_backup')) )
   		@copy ($image->imagePath, $image->imagePath . '_backup');
   	
-  	chmod(ABSPATH.$image->path ,0777);
+  	
   	
   	// if no parameter is set, take global settings
   	$width  = ($width  == 0) ? $ngg->options['imgWidth']  : $width;
@@ -50,15 +50,16 @@ function futureusresizengg(&$image, $width = 580, $height = 420) {
 	
 	if( $imageres->getWidth() < $imageres->getHeight() ) {
 		$imageres->resizeToHeight($height);
+		$proportion = 'portrait';
 	} elseif ( $imageres->getWidth() > $imageres->getHeight() ) {
 		$imageres->resizeToWidth($width);
+		$proportion = 'landscape';
 	}
 	
 	$imageres->save(ABSPATH.$image->path."/".$image->filename);
 	
-
 	
-	futureus_image_resize($image->imagePath, $image->imagePath, $width, $height);		
+	futureus_image_resize($image->imagePath, $image->imagePath, $width, $height, $proportion);		
 	
 	chmod(ABSPATH.$image->path."/".$image->filename, 0777);
 	
@@ -76,7 +77,7 @@ function futureusresizengg(&$image, $width = 580, $height = 420) {
 
 
 
-  function futureus_image_resize($src, $dst, $width, $height){
+  function futureus_image_resize($src, $dst, $width, $height, $proportion = 'landscape'){
   
   
     if(!list($w, $h) = getimagesize($src)) return "Unsupported picture type!";
@@ -95,8 +96,11 @@ function futureusresizengg(&$image, $width = 580, $height = 420) {
 	$background_height = imageSY($backgroundimage); 
     
     $dst_x = ( $background_width / 2 ) - ( $src_width / 2 ); 
-   	// $dst_y = ( $background_height / 2 ) - ( $src_height / 2 );
-    
+   	if($proportion == 'landscape') {
+   		$dst_y = ( $background_height / 2 ) - ( $src_height / 2 );
+    } else {
+    	$dst_y = 0;
+    }
     // get the desired backgroundcolor:
     $code = colordecode($bg);
     $backgroundcolor = ImageColorAllocate($backgroundimage, $code[r], $code[g], $code[b]);
@@ -104,7 +108,7 @@ function futureusresizengg(&$image, $width = 580, $height = 420) {
     ImageFilledRectangle($backgroundimage, 0, 0, $im_X, $im_Y, $backgroundcolor);
     
   	//ImageAlphaBlending($backgroundimage, true);
-    imagecopy($backgroundimage, $img, $dst_x, 0, 0, 0, $im_X, $im_Y);
+    imagecopy($backgroundimage, $img, $dst_x, $dst_y, 0, 0, $im_X, $im_Y);
     
     $type = strtolower(substr(strrchr($src,"."),1));
     switch($type){

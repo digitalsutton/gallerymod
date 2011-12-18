@@ -20,7 +20,6 @@ class FUTUREUS_NGG_JQuery_Slider extends WP_Widget {
 		$add_my_script = true;
 		
 		//todo: bring this into the class.
-		
 		gallery_template($gallery, $picturelist);
 	}
 
@@ -105,8 +104,8 @@ class FUTUREUS_NGG_JQuery_Slider extends WP_Widget {
 	
 			//Check for large originial image and display a link to view in colorbox if it exists.
 			if( file_exists($gallery->abspath . '/orig/' . $item->filename) ) {
+				chmod($gallery->abspath . '/orig/' . $item->filename ,0777);
 				$large_image_path = get_bloginfo('url') . '/' . $item->path . '/orig/' . $item->filename;
-				chmod($large_image_path ,0777);
 				$large_size = getimagesize($large_image_path);
 				
 				$slides[$hash_id]['image'] = "
@@ -160,7 +159,9 @@ class FUTUREUS_NGG_JQuery_Slider extends WP_Widget {
 				'fullGalleryWidth' => $futureus_settings['full_gallery_width'],
 				'mpuReplace' => $futureus_settings['mpuReplace'],
 				'tagpath' => $futureus_settings['dart_tags'],
+				'contentElement' => $futureus_settings['contentElement'],
 				'sidebarElement' => $futureus_settings['sidebarElement'],
+				'beforeOrAfter' => $futureus_settings['beforeOrAfter'],
 				'wpaudioFix' => $futureus_settings['wpaudio_fix'],
 		);
 		

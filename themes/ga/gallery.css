@@ -102,7 +102,7 @@ div.group-gallery div.galleryformatter-futureus-gallery { margin-top: 15px; }
 	background:url("../../css/images/gallery-sprite.png") no-repeat scroll 0 0 transparent;
 	background-position: center -205px;
 	height: 46px;
-	left: 530px;
+	left: 490px;
 	position: absolute;
 	text-indent: -9999px;
 	top: 0;
@@ -275,6 +275,7 @@ div.group-gallery div.galleryformatter-futureus-gallery { margin-top: 15px; }
 	background-position: center -326px;
 	background-repeat: repeat-x;
 	border-bottom:none;
+	height: 70px;
 }
 
 .galleryformatter-futureus-gallery .gallery-thumbs ul li {

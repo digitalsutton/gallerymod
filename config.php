@@ -21,7 +21,7 @@ $futureus_settings = array(
 	'refresh_mpu' => 1,
 	
 	//Selector id of the ad we are replacing with a refreshing ad
-	'mpuReplace' => '.gallery #MPU', 
+	'mpuReplace' => '.gallery #mpu', 
 	
 	//The main div ID of the main content area - usually something like "content".
 	'contentElement' => '#content',
@@ -36,7 +36,7 @@ $futureus_settings = array(
 	'ad_iframe_template' => '/wp-content/plugins/nextgen-futureus-gallery/ad_iframe.php', 
 	
 	//The dart tag used for the refreshable ad. Keywords are auto inserted if the article is tagged.
-	'dart_tags' => 'fut.us.guitaraficionado/homepage;sz=300x300;ord=123456789?', 
+	'dart_tags' => 'fut.us.guitaraficionado/homepage;dcopt=ist;tile=1;sz=300x600', 
 	
 );
 
