@@ -8,9 +8,6 @@ $futureus_settings = array(
 	//Choose an existing shortcode to replace.
 	'replace_shortcode' => 'imagebrowser', 
 	
-	//enable link to full image
-	'link_to_full' => 1, 
-	
 	//fixed width of the whole gallery box. Probably don't want to change this.
 	'full_gallery_width' => 580, 
 	
